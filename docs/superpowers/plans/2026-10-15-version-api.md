@@ -96,7 +96,11 @@ Create `version-backend-main/version.go`:
 ```go
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 // AppVersion 是后端硬编码的语义化版本号（semver）。
 const AppVersion = "1.0.0"
@@ -133,20 +137,6 @@ func corsMiddleware() gin.HandlerFunc {
 	}
 }
 ```
-
-注意：`version.go` 使用了 `http.StatusOK`，需补 import `net/http`。将 `version.go` 头部改为：
-
-```go
-package main
-
-import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
-)
-```
-
-（handler 实现保持不变。）
 
 - [ ] **Step 5: 运行测试确认通过**
 
